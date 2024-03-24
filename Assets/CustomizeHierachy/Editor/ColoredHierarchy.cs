@@ -25,16 +25,6 @@ public class ColoredHierarchy : EditorWindow
 		currentID = go.GetInstanceID();
 
 		SetAddRemoveBtns(currentID);
-		/*
-        GUILayout.Label("Hierarchy Color Setting", EditorStyles.boldLabel);
-		
-		LoadItemSelection(currentID);
-
-		if (GUILayout.Button("Clear Details in SO"))
-		{
-			CustomHierarchy._ItemChanges.Details.Clear();
-		}
-		*/
 
 		// If an object does not have a HI then it stops moving forward in the script
 		if (!go.TryGetComponent<HierarchyItems>(out var hi)) return;
@@ -50,13 +40,6 @@ public class ColoredHierarchy : EditorWindow
 			GameObject selected = Selection.activeGameObject;
 			var hi = CustomHierarchyUtils.AddHierarchyItemsToObject(ref selected);
 			CustomHierarchy._ItemChanges.Add(hi);
-
-			ChangeInformation changeInformation = new ChangeInformation();
-			changeInformation._BGColor = CustomHierarchy.ConvertFromBRGB(new(56, 56, 56), 1);
-			changeInformation._InactiveColor = CustomHierarchy.ConvertFromBRGB(new(49, 49, 49), 1);
-			changeInformation._SelectedColor = CustomHierarchy.ConvertFromBRGB(new(44, 93, 135), 1);
-			changeInformation._TextColor = UnityEngine.Color.white;//CustomHierarchy.ConvertFromBRGB(new(1,1,1),1);
-			changeInformation._IconType = ChangeInformation.IconType.COMPONENT;
 		}
 		if (GUILayout.Button("Remove"))
 		{
@@ -136,29 +119,11 @@ public class ColoredHierarchy : EditorWindow
 			hi._SelectedColor = EditorGUILayout.ColorField("Selected Color", hi._SelectedColor);
 		}
 	}
-
-	private void ColorSelection(ChangeInformation CI)
-	{
-		CI._BGColor = EditorGUILayout.ColorField("Background Color", CI._BGColor);
-		CI._InactiveColor = EditorGUILayout.ColorField("Inactive Color", CI._InactiveColor);
-		CI._SelectedColor = EditorGUILayout.ColorField("Selected Color", CI._SelectedColor);
-
-	}
-
 	private void TextSelection(HierarchyItems hi)
 	{
 		hi._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", hi._FontStyle);
 		hi._TextColor = EditorGUILayout.ColorField("Text Color", hi._TextColor);
 	}
-
-	private void TextSelection(ChangeInformation CI)
-	{
-		GUILayout.Space(spacer);
-		GUILayout.Label("Text");
-		CI._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", CI._FontStyle);
-		CI._TextColor = EditorGUILayout.ColorField("Text Color", CI._TextColor);
-	}
-
 	private void IconSeleciton(HierarchyItems hi)
 	{
 		if (hi.isAnyBGUsed() == false) return;
@@ -190,39 +155,4 @@ public class ColoredHierarchy : EditorWindow
 		}
 	}
 
-	private void IconSelection(ChangeInformation CI)
-	{
-		GUILayout.Space(spacer);
-		GUILayout.Label("Icon");
-		CI._IconType = (ChangeInformation.IconType)EditorGUILayout.EnumPopup("Icon Type", CI._IconType);
-		switch (CI._IconType)
-		{
-			default:
-			case ChangeInformation.IconType.NONE: break;
-			case ChangeInformation.IconType.TREE: break;
-			case ChangeInformation.IconType.GAMEOBJECT: break;
-			case ChangeInformation.IconType.COMPONENT:
-				break;
-			case ChangeInformation.IconType.CUSTOM:
-				int selectedBox = -1;
-				int width = 2;
-				int height = CustomHierarchy._ItemChanges.Texture.Count / width;
-
-				selectedBox = GUILayout.SelectionGrid(-1, CustomHierarchy._ItemChanges.Texture.ToArray(), width, GUILayout.Height(32 * height));
-
-				if (selectedBox != -1)
-				{
-					CI._Icon = CustomHierarchy._ItemChanges.Texture[selectedBox];
-				}
-
-				//var temp = (EditorGUILayout.ObjectField("Icon", null, typeof(Texture2D), true)) as Texture2D;
-				CI._Icon = (EditorGUILayout.ObjectField("Add New Icon", CI._Icon, typeof(Texture2D), true)) as Texture2D;
-
-				//if (temp != null)
-				//{
-				//	CustomHierarchy._ItemChanges.AddTexture(temp);
-				//}
-				break;
-		}
-	}
 }

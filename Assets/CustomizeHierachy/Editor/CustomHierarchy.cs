@@ -1,38 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Codice.CM.WorkspaceServer.WorkspaceTreeDataStore;
-
-[System.Serializable]
-public class ChangeInformation
-{
-	public ChangeInformation()
-	{
-		for (int i = 0; i < _IconTextures.Length; i++)
-		{
-			_IconTextures[i] = Resources.Load<Texture2D>(_TexturePaths[i]);
-		}
-	}
-
-	public enum IconType { NONE, GAMEOBJECT, COMPONENT, TREE, CUSTOM }
-
-	public Color _BGColor;
-	public Color _InactiveColor;
-	public Color _SelectedColor;
-
-	public Color _TextColor;
-	public FontStyle _FontStyle;
-
-	public IconType _IconType;
-	public Texture _Icon;
-	public Texture[] _IconTextures = new Texture[0];
-	private string[] _TexturePaths = new string[0];
-}
 
 [InitializeOnLoad]
 public class CustomHierarchy : MonoBehaviour
 {
-	//public static Dictionary<int, ChangeInformation> Items = new Dictionary<int, ChangeInformation>();
 	public static HierarchyChanged _ItemChanges;
 	private static string _ItemsChangeSOName = "Changeditems";
 	private static string[] _IconDefaultNames = {"GameObject Icon","Prefab Icon", "sv_label_1", "sv_label_2", "sv_label_3" };
@@ -200,16 +172,6 @@ public class CustomHierarchy : MonoBehaviour
 		}
 	}
 
-	private int GetGUIDFromInstanceID(int instanceID)
-	{
-		GameObject go = new();
-
-		AssetDatabase.TryGetGUIDAndLocalFileIdentifier(go, out string guid, out long fileID);
-
-		FindAnyObjectByType(typeof(HierarchyItems));
-
-		return -1;
-	}
 
 	public static void GetAllChangedItems()
 	{
@@ -250,26 +212,6 @@ public class CustomHierarchy : MonoBehaviour
 		}
 	}
 
-	private static void GetIcon(ChangeInformation ct, ref GameObject go, ref GUIContent content)
-	{
-		switch (ct._IconType)
-		{
-			case ChangeInformation.IconType.NONE: content.image = null; break;
-			default: case ChangeInformation.IconType.GAMEOBJECT: break;
-			case ChangeInformation.IconType.COMPONENT:
-				Component component = go.GetComponentCount() > 1 ? go.GetComponentAtIndex(1) : go.GetComponentAtIndex(0);
-				System.Type type = component.GetType();
-				GUIContent cont = EditorGUIUtility.ObjectContent(null, type);
-				content.image = cont.image;
-				break;
-			case ChangeInformation.IconType.TREE: break;
-			case ChangeInformation.IconType.CUSTOM:
-				if (ct._Icon == null) return;
-				content.image = (Texture)ct._Icon;
-				break;
-		}
-	}
-
 	public static void SetChangedItems()
 	{
 		if (_ItemChanges != null) return;
@@ -289,39 +231,3 @@ public class CustomHierarchy : MonoBehaviour
 
 	#endregion
 }
-
-/*
- private static void UseCustomColors(int instanceID, Rect selectionRect)
-	{
-		Color backgroundColor = defaultColor;
-
-		var obj = EditorUtility.InstanceIDToObject(instanceID);
-		if (obj != null)
-		{
-			Rect offsetRect = new Rect(selectionRect.position + offset, selectionRect.size);
-			if (Selection.instanceIDs.Contains(instanceID))
-			{
-				backgroundColor = selectedColor;
-			}
-
-			var prefab = PrefabUtility.GetPrefabAssetType(obj);
-			if (prefab == PrefabAssetType.Regular)
-			{
-				backgroundColor = prefabColor;
-			}
-
-			var go = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-			if (!go.activeInHierarchy)
-			{
-				backgroundColor = inactiveColor;
-			}
-
-			EditorGUI.DrawRect(selectionRect, backgroundColor);
-			EditorGUI.LabelField(offsetRect, obj.name, new GUIStyle()
-			{
-				normal = new GUIStyleState() { textColor = Color.black },
-				fontStyle = FontStyle.Bold
-			});
-		}
-	}
- */
