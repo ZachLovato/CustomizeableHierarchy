@@ -108,68 +108,91 @@ public class CustomHierarchy : MonoBehaviour
 		HierarchyItems hi = CustomHierarchyUtils.GetHierarchyFromObject(ref go);
 		if (hi == null) return;
 
-		// checks if the go and Id ar the same
-		if (instanceID == go.GetInstanceID())
+		bool usedBG = false;
+		bool skipColor = false;
+
+		// Background Color based Items
+		Color bgColor = new Color(-1, -1, -1);
+		if (go.activeInHierarchy)
 		{
-			bool usedBG = false;
-
-			// Background Color based Items
-			Color bgColor = new Color(-1, -1, -1);
-			if (go.activeInHierarchy)
+			if (hi._useDefaultSelectedColor && Selection.activeObject == go)
 			{
-				// will use custom colors
-				if (hi._useDefaultBG)
-				{
-					bgColor = hi._BGColor;
-				}
-
-				if (hi._useDefaultSelectedColor)
-				{
-					bgColor = hi._SelectedColor;
-				}
+				bgColor = hi._SelectedColor;
 			}
-			else
+			else skipColor = true;
+
+			// will use custom colors
+			if (hi._useDefaultBG && Selection.activeObject != go)
 			{
-				if (hi._useDefaultInactiveColor)
-				{
-					bgColor = hi._InactiveColor;
-				}
-			}
-
-			// null checks bg color
-			if (bgColor != new Color(-1, -1, -1))
-			{
-				EditorGUI.DrawRect(selectionRect, bgColor);
-				usedBG = true;
-			}
-
-			// text based Items
-			FontStyle style = FontStyle.Normal;
-			GUIStyleState styleState = new GUIStyleState();
-			bool useStyle = false;
-
-			if (hi._useDefaultText)
-			{
-				styleState.textColor = hi._TextColor;
-				style = hi._FontStyle;
-				useStyle = true;
-			}
-
-			var content = EditorGUIUtility.ObjectContent(EditorUtility.InstanceIDToObject(instanceID), null);
-
-			GetIcon(hi, ref go, ref content);
-
-			// last section
-			// content also includes icons/ images
-			if (useStyle || usedBG) 
-			{
-				EditorGUI.LabelField(selectionRect, content, new GUIStyle()
-				{
-					normal = styleState,
-					fontStyle = style
-				});
+				bgColor = hi._BGColor;
+				skipColor = false;
 			}
 		}
+		else
+		{
+			if (hi._useDefaultInactiveColor)
+			{
+				bgColor = hi._InactiveColor;
+			}
+		}
+
+		// null checks bg color
+		// and skip if not selected
+		if (bgColor != new Color(-1, -1, -1) && !skipColor)
+		{
+			EditorGUI.DrawRect(selectionRect, bgColor);
+			usedBG = true;
+		}
+
+		// text based Items
+		FontStyle style = FontStyle.Normal;
+		GUIStyleState styleState = new GUIStyleState();
+		bool useStyle = false;
+
+		if (hi._useDefaultText)
+		{
+			styleState.textColor = hi._TextColor;
+			style = hi._FontStyle;
+			useStyle = true;
+		}
+
+		var content = EditorGUIUtility.ObjectContent(EditorUtility.InstanceIDToObject(instanceID), null);
+		if (skipColor) { content.text = ""; }
+
+		GetIcon(hi, ref go, ref content);
+
+		
+
+		// last section
+		// content also includes icons/ images
+		if (usedBG)
+		{
+			EditorGUI.LabelField(selectionRect, content, new GUIStyle()
+			{
+				normal = styleState,
+				fontStyle = style,
+				fontSize = hi._fontSize,
+			});
+		}
+		else if (useStyle)
+		{
+			EditorGUI.DrawRect(selectionRect, CustomHierarchyUtils.ConvertFromBRGB(baseColor, 1));
+
+			content.text = hi.gameObject.name;
+
+			EditorGUI.LabelField(selectionRect, content, new GUIStyle()
+			{
+				normal = styleState,
+				fontStyle = style,
+				font = hi._font,
+				fontSize = hi._fontSize,
+			});
+		}
+	}
+
+	private static void GetBGColor()
+	{
+
 	}
 
 

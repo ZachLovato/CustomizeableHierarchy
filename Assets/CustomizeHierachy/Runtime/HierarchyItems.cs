@@ -4,26 +4,33 @@ using UnityEngine;
 public class HierarchyItems : MonoBehaviour
 {
 	//TODO Hide all items in inspector
-
 	public enum IconType { DEFAULT, NONE, COMPONENT, TREE, CUSTOM }
 
-	public Color _BGColor;
-	public Color _InactiveColor;
-	public Color _SelectedColor;
-	public bool _useFullWidth = false;
+	[HideInInspector] public Color _BGColor;
+	[HideInInspector] public Color _InactiveColor;
+	[HideInInspector] public Color _SelectedColor;
+	[HideInInspector] public bool _useFullWidth = false;
+	public Texture _Gradient = null;
+	[HideInInspector] public Gradient _ColorGradient = new();
 
-	public Color _TextColor;
-	public FontStyle _FontStyle;
+	[HideInInspector] public Color _TextColor;
+	[HideInInspector] public FontStyle _FontStyle;
+	[HideInInspector] public Font _font;
+	[HideInInspector] public int _fontSize = 12;
 
-	public IconType _IconType;
-	public Texture _Icon;
+	[HideInInspector] public IconType _IconType;
+	[HideInInspector] public Texture _Icon;
 
 	//this is to toggle UI Buttons
-	public bool _useDefaultBG;
-	public bool _useDefaultInactiveColor;
-	public bool _useDefaultSelectedColor;
-	public bool _useDefaultText;
-	public bool _useDefaultIcon;
+	[HideInInspector] public bool _useDefaultBG;
+	[HideInInspector] public bool _useDefaultInactiveColor;
+	[HideInInspector] public bool _useDefaultSelectedColor;
+	[HideInInspector] public bool _useGradient;
+	[HideInInspector] public bool _useDefaultText;
+	[HideInInspector] public bool _useDefaultIcon;
+
+	public GUIStyle style;
+	
 
 	HierarchyItems()
     {

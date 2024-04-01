@@ -2,6 +2,11 @@ using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
+//
+//
+//			UI Panel
+//
+//
 public class ColoredHierarchy : EditorWindow
 {
 	
@@ -50,6 +55,8 @@ public class ColoredHierarchy : EditorWindow
 
 	private void LoadItemSelected(HierarchyItems hi)
 	{
+		hi._useFullWidth = EditorGUILayout.Toggle("Use Wide Highlights", hi._useFullWidth);
+
 		ColorSelection(hi);
 
 		GUILayout.Space(spacer);
@@ -118,16 +125,17 @@ public class ColoredHierarchy : EditorWindow
 		{
 			hi._SelectedColor = EditorGUILayout.ColorField("Selected Color", hi._SelectedColor);
 		}
+		GradientCreation(hi);
 	}
 	private void TextSelection(HierarchyItems hi)
 	{
+		hi._fontSize = EditorGUILayout.IntField("Font Size", hi._fontSize);
+		hi._font = EditorGUILayout.ObjectField("Font", hi._font, typeof(UnityEngine.Font), true) as UnityEngine.Font;
 		hi._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", hi._FontStyle);
 		hi._TextColor = EditorGUILayout.ColorField("Text Color", hi._TextColor);
 	}
 	private void IconSeleciton(HierarchyItems hi)
 	{
-		if (hi.isAnyBGUsed() == false) return;
-
 		GUILayout.Space(spacer);
 		hi._IconType = (HierarchyItems.IconType)EditorGUILayout.EnumPopup("Icon Type", hi._IconType);
 		switch (hi._IconType)
@@ -154,5 +162,23 @@ public class ColoredHierarchy : EditorWindow
 				break;
 		}
 	}
+
+	private void GradientCreation(HierarchyItems hi)
+	{
+		if (!hi._useGradient)
+		{
+			hi._useGradient = EditorGUILayout.Toggle("Use Gradient overlay", hi._useGradient);
+			if (hi._Gradient != null) hi._Gradient = null;
+		}
+        else
+        {
+			hi._useGradient = EditorGUILayout.Toggle("Remove Gradient overlay", hi._useGradient);
+			hi._ColorGradient = (EditorGUILayout.GradientField("Gradient", hi._ColorGradient));
+			if (hi._Gradient == null)
+			{
+				hi._Gradient = CustomHierarchyUtils.Create(hi._ColorGradient);
+			}
+		}
+    }
 
 }

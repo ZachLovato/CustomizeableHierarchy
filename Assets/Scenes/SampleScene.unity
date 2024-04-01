@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3455163807768232422, guid: c0162eb70668b7f46ac5fddc573373fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.74
       objectReference: {fileID: 0}
     - target: {fileID: 3455163807768232422, guid: c0162eb70668b7f46ac5fddc573373fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -778,7 +778,7 @@ Transform:
   m_GameObject: {fileID: 1781674301}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -796,16 +796,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06100cdd05d99304da3de30116efea5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BGColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
+  _BGColor: {r: 1, g: 0.6462264, b: 0.6462264, a: 1}
   _InactiveColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
   _SelectedColor: {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
+  _useFullWidth: 0
+  _Gradient: {fileID: 0}
+  _ColorGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   _TextColor: {r: 1, g: 1, b: 1, a: 1}
-  _FontStyle: 0
-  _IconType: 0
-  _Icon: {fileID: 0}
-  _useDefaultBG: 0
+  _FontStyle: 2
+  _IconType: 4
+  _Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  _useDefaultBG: 1
   _useDefaultInactiveColor: 0
-  _useDefaultSelectedColor: 0
+  _useDefaultSelectedColor: 1
+  _useGradient: 0
   _useDefaultText: 0
   _useDefaultIcon: 0
 --- !u!1 &1905346387
@@ -836,7 +869,7 @@ Transform:
   m_GameObject: {fileID: 1905346387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.76, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
