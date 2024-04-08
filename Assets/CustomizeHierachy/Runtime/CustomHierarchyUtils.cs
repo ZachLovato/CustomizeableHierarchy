@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public static class CustomHierarchyUtils
@@ -40,15 +41,19 @@ public static class CustomHierarchyUtils
 
 	public static Texture2D Create(Gradient grad, int width = 32, int height = 1)
 	{
-		var gradTex = new Texture2D(width, height, TextureFormat.ARGB32, false);
+		var gradTex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+		gradTex.alphaIsTransparency = true;
 		gradTex.filterMode = FilterMode.Bilinear;
+		gradTex.EncodeToPNG();
+		
 		float inv = 1f / (width - 1);
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
-				var t = x * inv;
+				float t = x * inv;
 				Color col = grad.Evaluate(t);
+				col.a = 255;
 				gradTex.SetPixel(x, y, col);
 			}
 		}

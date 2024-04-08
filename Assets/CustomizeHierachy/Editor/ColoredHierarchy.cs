@@ -1,6 +1,9 @@
+using PrettyHierarchy;
+using System;
 using System.Drawing;
 using UnityEditor;
 using UnityEngine;
+using static Codice.CM.WorkspaceServer.WorkspaceTreeDataStore;
 
 //
 //
@@ -25,20 +28,28 @@ public class ColoredHierarchy : EditorWindow
 		if (CustomHierarchy._ItemChanges == null) return;
 
 		GameObject go = Selection.activeGameObject;
-		int currentID = -1;
+		//int currentID = -1;
 		if (go == null) return;
-		currentID = go.GetInstanceID();
+		//currentID = go.GetInstanceID();
 
-		SetAddRemoveBtns(currentID);
+		// check if the scene is in the current selection
+		
+
+		SetAddRemoveBtns();
 
 		// If an object does not have a HI then it stops moving forward in the script
 		if (!go.TryGetComponent<HierarchyItems>(out var hi)) return;
+
+		if (GUILayout.Button("Debug"))
+		{
+			CustomHierarchy.PrintCIKV();
+		}
 
 		LoadItemSelected(hi);
 
 	}
 
-	private void SetAddRemoveBtns(int currentID)
+	private void SetAddRemoveBtns()
 	{
 		if (GUILayout.Button("Add"))
 		{
@@ -127,13 +138,20 @@ public class ColoredHierarchy : EditorWindow
 		}
 		GradientCreation(hi);
 	}
+
 	private void TextSelection(HierarchyItems hi)
 	{
+		if (GUILayout.Button("Reset Font"))
+		{
+			hi._font = Resources.GetBuiltinResource<UnityEngine.Font>("LegacyRuntime.ttf");
+		}
+
 		hi._fontSize = EditorGUILayout.IntField("Font Size", hi._fontSize);
 		hi._font = EditorGUILayout.ObjectField("Font", hi._font, typeof(UnityEngine.Font), true) as UnityEngine.Font;
 		hi._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", hi._FontStyle);
 		hi._TextColor = EditorGUILayout.ColorField("Text Color", hi._TextColor);
 	}
+	
 	private void IconSeleciton(HierarchyItems hi)
 	{
 		GUILayout.Space(spacer);
@@ -145,6 +163,20 @@ public class ColoredHierarchy : EditorWindow
 			case HierarchyItems.IconType.TREE: break;
 			case HierarchyItems.IconType.DEFAULT: break;
 			case HierarchyItems.IconType.COMPONENT:
+				// gets the first non-transform or prettyobject icon
+				GameObject go = hi.gameObject;
+
+				if (go.GetComponentCount() > 1)
+				{
+					for (int i = 0; i < go.GetComponentCount(); i++)
+					{
+						Component component = go.GetComponentCount() > 1 ? go.GetComponentAtIndex(1) : go.GetComponentAtIndex(0);
+						System.Type type = component.GetType();
+						GUIContent cont = EditorGUIUtility.ObjectContent(null, type);
+						hi._Icon = cont.image;
+					}
+				}
+
 				break;
 			case HierarchyItems.IconType.CUSTOM:
 				int selectedBox = -1;
@@ -174,10 +206,19 @@ public class ColoredHierarchy : EditorWindow
         {
 			hi._useGradient = EditorGUILayout.Toggle("Remove Gradient overlay", hi._useGradient);
 			hi._ColorGradient = (EditorGUILayout.GradientField("Gradient", hi._ColorGradient));
+
+			if (hi._PrevGradient != hi._ColorGradient)
+			{
+				hi._Gradient = null;
+				Debug.Log("Gradients are Different");
+			}
+
 			if (hi._Gradient == null)
 			{
 				hi._Gradient = CustomHierarchyUtils.Create(hi._ColorGradient);
+				Debug.Log("New Gradient Created");
 			}
+			hi._PrevGradient = hi._ColorGradient;
 		}
     }
 

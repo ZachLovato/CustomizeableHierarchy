@@ -33,7 +33,15 @@ public class HierarchyChanged : ScriptableObject
 	{
 		string sceneName = SceneManager.GetActiveScene().name;
 
-		ItemLists[sceneName].Add(item);
+		if (ItemLists.ContainsKey(sceneName))
+		{
+			ItemLists[sceneName].Add(item);
+		}
+		else
+		{
+			ItemLists.Add(sceneName, new List<HierarchyItems> { item });
+		}
+
 	}
 
 	public bool Contains(HierarchyItems hi)
@@ -41,5 +49,13 @@ public class HierarchyChanged : ScriptableObject
 		string sceneName = SceneManager.GetActiveScene().name;
 
 		return ItemLists[sceneName].Contains(hi);
+	}
+
+	public void PrintAllListKV()
+	{
+		foreach (var item in ItemLists)
+		{
+			Debug.Log(item.Key);
+		}
 	}
 }

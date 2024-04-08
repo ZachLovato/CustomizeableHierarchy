@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 [InitializeOnLoad]
 public class CustomHierarchy : MonoBehaviour
@@ -161,6 +162,7 @@ public class CustomHierarchy : MonoBehaviour
 
 		GetIcon(hi, ref go, ref content);
 
+
 		
 
 		// last section
@@ -171,12 +173,23 @@ public class CustomHierarchy : MonoBehaviour
 			{
 				normal = styleState,
 				fontStyle = style,
+				font = hi._font,
 				fontSize = hi._fontSize,
 			});
 		}
 		else if (useStyle)
 		{
 			EditorGUI.DrawRect(selectionRect, CustomHierarchyUtils.ConvertFromBRGB(baseColor, 1));
+
+			if (hi._useGradient)
+			{
+				if (hi._Gradient != null)
+				{
+					//EditorGUI.DrawTextureAlpha(new Rect(10, 40, position.width - 20, position.height - 50), texture);
+					//EditorGUI.DrawPreviewTexture(selectionRect, hi._Gradient);
+					EditorGUI.DrawTextureTransparent(selectionRect, hi._Gradient);
+				}
+			}
 
 			content.text = hi.gameObject.name;
 
@@ -188,6 +201,8 @@ public class CustomHierarchy : MonoBehaviour
 				fontSize = hi._fontSize,
 			});
 		}
+
+		
 	}
 
 	private static void GetBGColor()
@@ -250,6 +265,11 @@ public class CustomHierarchy : MonoBehaviour
 		{
 			_ItemChanges.AddTexture(EditorGUIUtility.IconContent(_IconDefaultNames[i]).image as Texture2D);
 		}
+	}
+
+	public static void PrintCIKV()
+	{
+		_ItemChanges.PrintAllListKV();
 	}
 
 	#endregion

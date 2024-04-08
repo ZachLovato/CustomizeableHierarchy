@@ -10,8 +10,9 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public Color _InactiveColor;
 	[HideInInspector] public Color _SelectedColor;
 	[HideInInspector] public bool _useFullWidth = false;
-	public Texture _Gradient = null;
+	public Texture2D _Gradient = null;
 	[HideInInspector] public Gradient _ColorGradient = new();
+	[HideInInspector] public Gradient _PrevGradient = new();
 
 	[HideInInspector] public Color _TextColor;
 	[HideInInspector] public FontStyle _FontStyle;
@@ -29,7 +30,7 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public bool _useDefaultText;
 	[HideInInspector] public bool _useDefaultIcon;
 
-	public GUIStyle style;
+	//public GUIStyle style;
 	
 
 	HierarchyItems()
@@ -37,9 +38,9 @@ public class HierarchyItems : MonoBehaviour
 		_BGColor = CustomHierarchyUtils.ConvertFromBRGB(new(56, 56, 56), 1);
 		_InactiveColor = CustomHierarchyUtils.ConvertFromBRGB(new(49, 49, 49), 1);
 		_SelectedColor = CustomHierarchyUtils.ConvertFromBRGB(new(44, 93, 135), 1);
-		_TextColor = Color.black;
-		_IconType = IconType.NONE;
-	}	
+		_TextColor = Color.white;
+		_IconType = IconType.DEFAULT;
+	}
 
 	public bool isAnyBGUsed()
 	{
