@@ -18,6 +18,7 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public FontStyle _FontStyle;
 	[HideInInspector] public Font _font;
 	[HideInInspector] public int _fontSize = 12;
+	[HideInInspector] public TextAnchor _textAnchor = TextAnchor.MiddleLeft;
 
 	[HideInInspector] public IconType _IconType;
 	[HideInInspector] public Texture _Icon;
@@ -29,9 +30,6 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public bool _useGradient;
 	[HideInInspector] public bool _useDefaultText;
 	[HideInInspector] public bool _useDefaultIcon;
-
-	//public GUIStyle style;
-	
 
 	HierarchyItems()
     {

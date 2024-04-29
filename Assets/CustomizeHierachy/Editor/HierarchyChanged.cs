@@ -9,6 +9,9 @@ public class HierarchyChanged : ScriptableObject
 {
     public List<Texture2D> Texture = new List<Texture2D>();
 
+	// a set of classes that will be a preset for 
+	public Dictionary<string, List<HierarchyItems>> Presets = new Dictionary<string, List<HierarchyItems>>();
+
 	public void AddTexture(Texture2D tex)
 	{
 		if (!Texture.Contains(tex)) Texture.Add(tex);

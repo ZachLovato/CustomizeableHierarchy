@@ -123,54 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!28 &98692529
-Texture2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 2
-  m_Width: 32
-  m_Height: 1
-  m_CompleteImageSize: 128
-  m_MipsStripped: 0
-  m_TextureFormat: 4
-  m_MipCount: 1
-  m_IsReadable: 1
-  m_IsPreProcessed: 0
-  m_IgnoreMipmapLimit: 0
-  m_MipmapLimitGroupName: 
-  m_StreamingMipmaps: 0
-  m_StreamingMipmapsPriority: 0
-  m_VTOnly: 0
-  m_AlphaIsTransparency: 1
-  m_ImageCount: 1
-  m_TextureDimension: 2
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_LightmapFormat: 0
-  m_ColorSpace: 1
-  m_PlatformBlob: 
-  image data: 128
-  _typelessdata: cd9696ffd6aa79ffdfbf5bffe8d33efff2e821fffbfc04fffce60efffdc81efffeab2efffe8e3effff704efffb5858ffed5252ffde4b4bffcf4444ffc03d3dffb13636ffa22f2fff942929ff852222ff761b1bff671414ff580d0dff490606ff462211ff44411eff425f2aff3f7e37ff3d9d43ff3bbc50ff38da5cff36f968ff
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1001 &142467991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,7 +196,6 @@ GameObject:
   - component: {fileID: 174688623}
   - component: {fileID: 174688622}
   - component: {fileID: 174688621}
-  - component: {fileID: 174688625}
   m_Layer: 0
   m_Name: w
   m_TagString: Untagged
@@ -342,95 +293,54 @@ Transform:
   - {fileID: 866278227}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &174688625
-MonoBehaviour:
+--- !u!28 &238351163
+Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174688620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06100cdd05d99304da3de30116efea5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  _BGColor: {r: 0.4943396, g: 0.47045165, b: 0, a: 1}
-  _InactiveColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
-  _SelectedColor: {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
-  _useFullWidth: 0
-  _Gradient: {fileID: 0}
-  _ColorGradient:
+  m_ImageContentsHash:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _PrevGradient:
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 2
+  m_Width: 32
+  m_Height: 1
+  m_CompleteImageSize: 128
+  m_MipsStripped: 0
+  m_TextureFormat: 4
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMipmapLimit: 0
+  m_MipmapLimitGroupName: 
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 1
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _TextColor: {r: 1, g: 1, b: 1, a: 1}
-  _FontStyle: 0
-  _font: {fileID: 0}
-  _fontSize: 12
-  _IconType: 0
-  _Icon: {fileID: 0}
-  _useDefaultBG: 1
-  _useDefaultInactiveColor: 0
-  _useDefaultSelectedColor: 0
-  _useGradient: 0
-  _useDefaultText: 0
-  _useDefaultIcon: 0
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_LightmapFormat: 0
+  m_ColorSpace: 1
+  m_PlatformBlob: 
+  image data: 128
+  _typelessdata: 676767ff676767ff676767ff676767ff676767ff686767ff786666ff886464ff976363ffa76262ffb76060ffc65f5fffd65e5effe65c5cfff55b5bffea6f6fffb4a8a7ff7de1dfff8ad2d0ff99bfbeffa9adacffb89b9affc78989ffd77777ffe66565ffe1675cffc57f5effa89760ff8cb062ff6fc864ff53e166ff36f968ff
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &526197185
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +489,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -665,95 +574,6 @@ Transform:
   - {fileID: 526197186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &705507996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06100cdd05d99304da3de30116efea5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _BGColor: {r: 0.221725, g: 0.6377357, b: 0.046927653, a: 1}
-  _InactiveColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
-  _SelectedColor: {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
-  _useFullWidth: 0
-  _Gradient: {fileID: 0}
-  _ColorGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _PrevGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _TextColor: {r: 1, g: 1, b: 1, a: 1}
-  _FontStyle: 0
-  _font: {fileID: 0}
-  _fontSize: 12
-  _IconType: 0
-  _Icon: {fileID: 0}
-  _useDefaultBG: 1
-  _useDefaultInactiveColor: 0
-  _useDefaultSelectedColor: 0
-  _useGradient: 0
-  _useDefaultText: 0
-  _useDefaultIcon: 0
 --- !u!1 &866278226
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +693,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -954,6 +775,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06100cdd05d99304da3de30116efea5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _BGColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
+  _InactiveColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
+  _SelectedColor: {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
+  _useFullWidth: 0
+  _Gradient: {fileID: 2044874151}
+  _ColorGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _PrevGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _TextColor: {r: 1, g: 1, b: 1, a: 1}
+  _FontStyle: 0
+  _font: {fileID: 0}
+  _fontSize: 12
+  _textAnchor: 3
+  _IconType: 2
+  _Icon: {fileID: -3250772413011610475, guid: 0000000000000000d000000000000000, type: 0}
+  _useDefaultBG: 0
+  _useDefaultInactiveColor: 0
+  _useDefaultSelectedColor: 0
+  _useGradient: 0
+  _useDefaultText: 1
+  _useDefaultIcon: 0
 --- !u!1 &1781674301
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +878,7 @@ GameObject:
   m_Layer: 0
   m_Name: TransformOnly
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1002,23 +913,23 @@ MonoBehaviour:
   _InactiveColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
   _SelectedColor: {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
   _useFullWidth: 0
-  _Gradient: {fileID: 98692529}
+  _Gradient: {fileID: 238351163}
   _ColorGradient:
     serializedVersion: 2
-    key0: {r: 0.8037735, g: 0.5869063, b: 0.5869063, a: 1}
-    key1: {r: 0.9883168, g: 1, b: 0, a: 1}
-    key2: {r: 1, g: 0.35304996, b: 0.35304996, a: 0}
-    key3: {r: 0.2830189, g: 0.022961887, b: 0.022961887, a: 0}
+    key0: {r: 0.4037736, g: 0.4037736, b: 0.4037736, a: 1}
+    key1: {r: 1, g: 0.35304996, b: 0.35304996, a: 1}
+    key2: {r: 0.48235294, g: 0.8901961, b: 0.88247716, a: 0}
+    key3: {r: 0.93417174, g: 0.35865027, b: 0.35865027, a: 0}
     key4: {r: 0.21206822, g: 0.97735846, b: 0.40949094, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0.21206822, g: 0.97735846, b: 0.40949094, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 10871
-    ctime2: 22745
-    ctime3: 48804
+    ctime0: 10409
+    ctime1: 30917
+    ctime2: 36006
+    ctime3: 51888
     ctime4: 65535
-    ctime5: 0
+    ctime5: 65535
     ctime6: 0
     ctime7: 0
     atime0: 0
@@ -1035,20 +946,20 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   _PrevGradient:
     serializedVersion: 2
-    key0: {r: 0.8037735, g: 0.5869063, b: 0.5869063, a: 1}
-    key1: {r: 0.9883168, g: 1, b: 0, a: 1}
-    key2: {r: 1, g: 0.35304996, b: 0.35304996, a: 0}
-    key3: {r: 0.2830189, g: 0.022961887, b: 0.022961887, a: 0}
+    key0: {r: 0.4037736, g: 0.4037736, b: 0.4037736, a: 1}
+    key1: {r: 1, g: 0.35304996, b: 0.35304996, a: 1}
+    key2: {r: 0.48235294, g: 0.8901961, b: 0.88247716, a: 0}
+    key3: {r: 0.93417174, g: 0.35865027, b: 0.35865027, a: 0}
     key4: {r: 0.21206822, g: 0.97735846, b: 0.40949094, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0.21206822, g: 0.97735846, b: 0.40949094, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 10871
-    ctime2: 22745
-    ctime3: 48804
+    ctime0: 10409
+    ctime1: 30917
+    ctime2: 36006
+    ctime3: 51888
     ctime4: 65535
-    ctime5: 0
+    ctime5: 65535
     ctime6: 0
     ctime7: 0
     atime0: 0
@@ -1067,12 +978,13 @@ MonoBehaviour:
   _FontStyle: 0
   _font: {fileID: 12800000, guid: 05d31ec1a9611ca40bf7dc2a500122d9, type: 3}
   _fontSize: 12
-  _IconType: 4
-  _Icon: {fileID: 2800000, guid: 218a01471d36ec54c8e245c91ca45839, type: 3}
+  _textAnchor: 3
+  _IconType: 2
+  _Icon: {fileID: 148978298399363526, guid: 0000000000000000d000000000000000, type: 0}
   _useDefaultBG: 0
   _useDefaultInactiveColor: 0
   _useDefaultSelectedColor: 0
-  _useGradient: 1
+  _useGradient: 0
   _useDefaultText: 1
   _useDefaultIcon: 0
 --- !u!1 &1905346387
@@ -1182,6 +1094,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905346387}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!28 &2044874151
+Texture2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 2
+  m_Width: 32
+  m_Height: 1
+  m_CompleteImageSize: 128
+  m_MipsStripped: 0
+  m_TextureFormat: 4
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMipmapLimit: 0
+  m_MipmapLimitGroupName: 
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 1
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_LightmapFormat: 0
+  m_ColorSpace: 1
+  m_PlatformBlob: 
+  image data: 128
+  _typelessdata: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!4 &1332224070268387707
 Transform:
   m_ObjectHideFlags: 0

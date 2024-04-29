@@ -40,64 +40,6 @@ public class CustomHierarchy : MonoBehaviour
 		UseDicColors(instanceID, selectionRect);
 	}
 
-	/*
-    private static void UseDefaultColors(int instanceID, Rect selectionRect)
-    {
-
-	ci._Icon
-		SetChangedItems();
-
-		if (_ItemChanges == null) return;
-
-		if (EditorUtility.InstanceIDToObject(instanceID) == null)
-		{
-			if (_ItemChanges.Contains(instanceID)) _ItemChanges.RemoveItem(instanceID); 
-			return;
-		}
-		
-		if (_ItemChanges.Contains(instanceID))
-		{
-			//Checks for a null Changeinformation
-			ChangeInformation ci = _ItemChanges.GetDetails(instanceID);
-			if (ci == null)
-			{
-				Debug.Log("CI is null for: " +  instanceID);
-				return;
-			}
-
-
-			Color bgColor = ci._BGColor;
-
-			if (Selection.instanceIDs.Contains(instanceID)) bgColor = ci._SelectedColor;
-
-			var go = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-			if (!go.activeInHierarchy) bgColor = ci._InactiveColor;
-
-			//Rect offsetRect = new Rect(selectionRect.position + offset, selectionRect.size);
-			float posX = selectionRect.position.x - selectionRect.xMin;
-			float posY = selectionRect.position.y;
-			float sizeX = selectionRect.size.x + selectionRect.xMin + 32;
-			float sizeY = selectionRect.size.y;
-			Rect offsetRect = new Rect(new(posX, posY), new(sizeX, sizeY));
-
-			var content = EditorGUIUtility.ObjectContent(EditorUtility.InstanceIDToObject(instanceID), null);
-
-			//EditorGUI.DrawRect(selectionRect, bgColor);
-			EditorGUI.DrawRect(offsetRect, bgColor);
-
-			GetIcon(ci, ref go, ref content);
-			content.text = go.name;
-			content.tooltip = content.text;
-
-			EditorGUI.LabelField(selectionRect, content, new GUIStyle()
-			{
-				normal = new GUIStyleState() { textColor = ci._TextColor },
-				fontStyle = ci._FontStyle
-			});	
-		}
-	}
-	*/
-
 	public static void UseDicColors(int instanceID, Rect selectionRect)
 	{
 		// checks if there is an object with the id
@@ -144,6 +86,15 @@ public class CustomHierarchy : MonoBehaviour
 			EditorGUI.DrawRect(selectionRect, bgColor);
 			usedBG = true;
 		}
+		else if (hi._useGradient)
+		{
+			if (hi._Gradient != null)
+			{
+				//EditorGUI.DrawTextureAlpha(new Rect(10, 40, position.width - 20, position.height - 50), texture);
+				//EditorGUI.DrawPreviewTexture(selectionRect, hi._Gradient);
+				EditorGUI.DrawTextureTransparent(selectionRect, hi._Gradient);
+			}
+		}
 
 		// text based Items
 		FontStyle style = FontStyle.Normal;
@@ -162,9 +113,6 @@ public class CustomHierarchy : MonoBehaviour
 
 		GetIcon(hi, ref go, ref content);
 
-
-		
-
 		// last section
 		// content also includes icons/ images
 		if (usedBG)
@@ -175,21 +123,12 @@ public class CustomHierarchy : MonoBehaviour
 				fontStyle = style,
 				font = hi._font,
 				fontSize = hi._fontSize,
+				alignment = hi._textAnchor
 			});
 		}
 		else if (useStyle)
 		{
-			EditorGUI.DrawRect(selectionRect, CustomHierarchyUtils.ConvertFromBRGB(baseColor, 1));
-
-			if (hi._useGradient)
-			{
-				if (hi._Gradient != null)
-				{
-					//EditorGUI.DrawTextureAlpha(new Rect(10, 40, position.width - 20, position.height - 50), texture);
-					//EditorGUI.DrawPreviewTexture(selectionRect, hi._Gradient);
-					EditorGUI.DrawTextureTransparent(selectionRect, hi._Gradient);
-				}
-			}
+			if (!hi._useGradient) EditorGUI.DrawRect(selectionRect, CustomHierarchyUtils.ConvertFromBRGB(baseColor, 1));
 
 			content.text = hi.gameObject.name;
 
@@ -199,17 +138,12 @@ public class CustomHierarchy : MonoBehaviour
 				fontStyle = style,
 				font = hi._font,
 				fontSize = hi._fontSize,
+				alignment = hi._textAnchor
 			});
 		}
 
 		
 	}
-
-	private static void GetBGColor()
-	{
-
-	}
-
 
 	public static void GetAllChangedItems()
 	{
@@ -240,7 +174,8 @@ public class CustomHierarchy : MonoBehaviour
 				Component component = go.GetComponentCount() > 1 ? go.GetComponentAtIndex(1) : go.GetComponentAtIndex(0);
 				System.Type type = component.GetType();
 				GUIContent cont = EditorGUIUtility.ObjectContent(null, type);
-				content.image = cont.image;
+				if (cont.image != null) content.image = cont.image;
+				else content.image = hi._Icon;
 				break;
 			case HierarchyItems.IconType.TREE: break;
 			case HierarchyItems.IconType.CUSTOM:
