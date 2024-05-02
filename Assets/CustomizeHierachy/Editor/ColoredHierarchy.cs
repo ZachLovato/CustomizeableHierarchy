@@ -213,8 +213,8 @@ public class ColoredHierarchy : EditorWindow
 
 		hi._fontSize = EditorGUILayout.IntField("Font Size", hi._fontSize);
 		hi._font = EditorGUILayout.ObjectField("Font", hi._font, typeof(UnityEngine.Font), true) as UnityEngine.Font;
-		hi._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", hi._FontStyle);
 		hi._TextColor = EditorGUILayout.ColorField("Text Color", hi._TextColor);
+		hi._FontStyle = (UnityEngine.FontStyle)EditorGUILayout.EnumPopup("Font Style", hi._FontStyle);
 		hi._textAnchor = (UnityEngine.TextAnchor)EditorGUILayout.EnumPopup("Text Position", hi._textAnchor);
 	}
 	

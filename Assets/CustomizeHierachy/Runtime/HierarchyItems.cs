@@ -31,13 +31,34 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public bool _useDefaultText;
 	[HideInInspector] public bool _useDefaultIcon;
 
-	HierarchyItems()
+	public HierarchyItems()
     {
 		_BGColor = CustomHierarchyUtils.ConvertFromBRGB(new(56, 56, 56), 1);
 		_InactiveColor = CustomHierarchyUtils.ConvertFromBRGB(new(49, 49, 49), 1);
 		_SelectedColor = CustomHierarchyUtils.ConvertFromBRGB(new(44, 93, 135), 1);
 		_TextColor = Color.white;
 		_IconType = IconType.DEFAULT;
+	}
+
+	public void SetUseButtons (bool defaultBg, bool defaultInactive, bool deafultSelect, bool useGradient, bool defaultText, bool defaultIcon)
+	{
+		_useDefaultBG = defaultBg;
+		_useDefaultInactiveColor = defaultInactive;
+		_useDefaultSelectedColor = deafultSelect;
+		_useGradient = useGradient;
+		_useDefaultText = defaultText;
+		_useDefaultIcon = defaultIcon;
+	}
+
+	public void SetIcon(IconType type, Texture icon)
+	{
+		_IconType = type;
+		_Icon = icon;
+	}
+
+	public void SetTextStyle()
+	{
+
 	}
 
 	public bool isAnyBGUsed()
