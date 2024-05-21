@@ -8,7 +8,7 @@ public class CustomHierarchy : MonoBehaviour
 {
 	public static HierarchyChanged _ItemChanges;
 	private static string _ItemsChangeSOName = "Changeditems";
-	private static string[] _IconDefaultNames = {"GameObject Icon","Prefab Icon", "sv_label_1", "sv_label_2", "sv_label_3" };
+	private static string[] _IconDefaultNames = {"GameObject Icon","Prefab Icon", "sv_label_1", "sv_label_2", "sv_label_3", "Animation.Play" };
 
     private static Vector2 offset = new Vector2(0, 0);
     #region Color Variables
@@ -81,10 +81,23 @@ public class CustomHierarchy : MonoBehaviour
 
 		// null checks bg color
 		// and skip if not selected
+
+		Rect backgroundRect = hi._useFullWidth ? new Rect(selectionRect.x - 28, selectionRect.y, 6900, 17) : selectionRect;
+
 		if (bgColor != new Color(-1, -1, -1) && !skipColor)
 		{
-			EditorGUI.DrawRect(selectionRect, bgColor);
-			usedBG = true;
+			if (!hi._useDefaultInactiveColor)
+			{
+				EditorGUI.DrawRect(backgroundRect, bgColor);
+				usedBG = true;
+			}
+
+			if (backgroundRect != selectionRect)
+			{
+				//EditorGUIUtility.IconContent(_IconDefaultNames[i]).image as Texture2D
+				GUI.DrawTexture(backgroundRect, EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+				EditorGUI.DrawPreviewTexture(new Rect(selectionRect.x -15, selectionRect.y + 1.5f, 15, 15), EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+			}
 		}
 		else if (hi._useGradient)
 		{
@@ -100,6 +113,7 @@ public class CustomHierarchy : MonoBehaviour
 		FontStyle style = FontStyle.Normal;
 		GUIStyleState styleState = new GUIStyleState();
 		bool useStyle = false;
+
 
 		if (hi._useDefaultText)
 		{
@@ -141,8 +155,6 @@ public class CustomHierarchy : MonoBehaviour
 				alignment = hi._textAnchor
 			});
 		}
-
-		
 	}
 
 	public static void GetAllChangedItems()
