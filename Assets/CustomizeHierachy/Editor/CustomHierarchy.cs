@@ -93,8 +93,8 @@ public class CustomHierarchy
 			if (backgroundRect != selectionRect)
 			{
 				//EditorGUIUtility.IconContent(_IconDefaultNames[i]).image as Texture2D
-				GUI.DrawTexture(backgroundRect, EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
-				EditorGUI.DrawPreviewTexture(new Rect(selectionRect.x -15, selectionRect.y + 1.5f, 15, 15), EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+				//GUI.DrawTexture(backgroundRect, EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+				//EditorGUI.DrawPreviewTexture(new Rect(selectionRect.x -15, selectionRect.y + 1.5f, 15, 15), EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
 			}
 		}
 		else if (hi._useGradient)

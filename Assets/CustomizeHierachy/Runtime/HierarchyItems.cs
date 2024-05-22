@@ -32,6 +32,9 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public bool _useDefaultText;
 	[HideInInspector] public bool _useDefaultIcon;
 
+	[HideInInspector] public int _presetSelection = 0;
+	[HideInInspector] public int _prevPresetSelection = 0;
+
 	public HierarchyItems()
     {
 		_BGColor = CustomHierarchyUtils.ConvertFromBRGB(new(56, 56, 56), 1);

@@ -51,16 +51,35 @@ public class ColoredHierarchy : EditorWindow
 		{
 			// clear all user made presets
 			CustomHierarchy._ItemChanges.Clear();
-			/// TODO 
-			/// Add a function to put in all deafult preset
+
+			hi._presetSelection = 0;
+			hi._prevPresetSelection = 0;
+
+			CustomHierarchy._ItemChanges.AddPreset("Preset_1", CustomHierarchyUtils.GetPresetOne());
+			CustomHierarchy._ItemChanges.AddPreset("Preset_2", CustomHierarchyUtils.GetPresetTwo());
+			CustomHierarchy._ItemChanges.AddPreset("Preset_3", CustomHierarchyUtils.GetPresetThree());
 		}
-		if (GUILayout.Button("Debug"))
-		{
-			CustomHierarchy._ItemChanges.PrintPresetCount();
-		}
+		//if (GUILayout.Button("Debug"))
+		//{
+		//	CustomHierarchy._ItemChanges.PrintPresetCount();
+		//}
 
 		GUILayout.EndHorizontal();
-		
+		if (CustomHierarchy._ItemChanges.Preset.Count != 0)
+		{
+			string[] presetList = CustomHierarchy._ItemChanges.GetPresetArray();
+
+			hi._presetSelection = EditorGUILayout.Popup(hi._presetSelection, presetList);
+
+			if (hi._presetSelection != hi._prevPresetSelection && hi._presetSelection != 0)
+			{
+				hi._prevPresetSelection = hi._presetSelection;
+
+				// do something to set the preset
+				CustomHierarchy._ItemChanges.OneOfUs(presetList[hi._presetSelection], hi);
+			}
+		}
+
 		GUILayout.Space(spacer);
 
 		LoadItemSelected(hi);
@@ -84,10 +103,10 @@ public class ColoredHierarchy : EditorWindow
 			CustomHierarchyUtils.RemoveHierarchyItemsFromObject(ref selected);
 		}
 
-		if (GUILayout.Button("Debug"))
-		{
-			CustomHierarchy.PrintCIKV();
-		}
+		//if (GUILayout.Button("Debug"))
+		//{
+		//	CustomHierarchy.PrintCIKV();
+		//}
 
 		GUILayout.EndHorizontal();
 	}

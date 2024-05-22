@@ -58,4 +58,50 @@ public static class CustomHierarchyUtils
 		gradTex.Apply();
 		return gradTex;
 	}
+
+	public static HierarchyItems GetPresetOne()
+	{
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
+
+		hi._useDefaultBG = true;
+		hi._BGColor = Color.HSVToRGB(359, 67, 87);
+		hi._useDefaultText = true;
+		hi._TextColor = Color.HSVToRGB(0, 0, 100);
+
+		Object.DestroyImmediate(temp);
+
+		return hi;
+	}
+
+	public static HierarchyItems GetPresetTwo()
+	{
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
+
+		hi._useDefaultBG = true;
+		hi._useFullWidth = true;
+		hi._BGColor = new Color(0.108f, 0.278f, 0.534f);
+		hi._useDefaultText = true;
+		hi._TextColor = new Color(0, 0, 0);
+		hi._textAnchor = TextAnchor.MiddleCenter;
+
+		Object.DestroyImmediate(temp);
+
+		return hi;
+	}
+
+	public static HierarchyItems GetPresetThree()
+	{
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
+
+		hi._useDefaultText = true;
+		hi._TextColor = new Color(0, 0, 0);
+		hi._IconType = HierarchyItems.IconType.COMPONENT;
+
+		Object.DestroyImmediate(temp);
+
+		return hi;
+	}
 }
