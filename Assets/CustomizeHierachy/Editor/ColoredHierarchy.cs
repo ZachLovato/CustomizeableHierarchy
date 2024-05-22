@@ -1,10 +1,5 @@
-using Codice.CM.WorkspaceServer.DataStore.Configuration;
-using PrettyHierarchy;
-using System;
-using System.Drawing;
 using UnityEditor;
 using UnityEngine;
-using static Codice.CM.WorkspaceServer.WorkspaceTreeDataStore;
 
 //
 //
