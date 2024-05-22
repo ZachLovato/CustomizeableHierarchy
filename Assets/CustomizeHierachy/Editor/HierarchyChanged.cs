@@ -2,8 +2,6 @@ using Codice.Client.BaseCommands.Merge.Xml;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -96,66 +94,6 @@ public class HierarchyChanged : ScriptableObject
 		}
 		
 		Debug.Log(output);
-	}
-
-	public string[] GetPresetArray()
-	{
-		string[] output = new string[Preset.Count + 1];
-		output[0] = "None";
-
-		int count = 1;
-
-		foreach (KeyValuePair<string, HierarchyItems> kvp in Preset)
-		{
-			output[count] += kvp.Key + " ";
-			count++;
-		}
-
-		return output;
-	}
-
-	/// <summary>
-	/// Converts the other HI into a preset
-	/// This should be named Convert or something along those lines
-	/// </summary>
-	public void OneOfUs(string hiName, HierarchyItems other)
-	{
-		hiName = hiName.Substring(0, hiName.Length - 1);
-		if (!Preset.ContainsKey(hiName))
-		{
-			other._presetSelection = 0;
-			other._presetSelection = 0;
-		}
-
-		HierarchyItems temp = Preset[hiName]; // this is a dumb way bit other = temp did not work
-
-		other._Name = temp._Name;
-		other._BGColor = temp._BGColor;
-		other._InactiveColor = temp._InactiveColor;
-		other._SelectedColor = temp._SelectedColor;
-		other._useFullWidth = temp._useFullWidth;
-		other._Gradient = temp._Gradient;
-		other._ColorGradient = temp._ColorGradient;
-		other._PrevGradient = temp._PrevGradient;
-
-		other._TextColor = temp._TextColor;
-		other._FontStyle = temp._FontStyle;
-		other._font = temp._font;
-		other._fontSize = temp._fontSize;
-		other._textAnchor = temp._textAnchor;
-
-		other._IconType = temp._IconType;
-		other._Icon = temp._Icon;
-
-		other._useDefaultBG = temp._useDefaultBG;
-		other._useDefaultInactiveColor = temp._useDefaultInactiveColor;
-		other._useDefaultSelectedColor = temp._useDefaultSelectedColor;
-		other._useGradient = temp._useGradient;
-		other._useDefaultText = temp._useDefaultText;
-		other._useDefaultIcon = temp._useDefaultIcon;
-
-		other._presetSelection = 0;
-		other._prevPresetSelection = 0;
 	}
 
 	public void PrintAllListKV()

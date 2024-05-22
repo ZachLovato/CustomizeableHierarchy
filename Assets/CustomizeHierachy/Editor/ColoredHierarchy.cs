@@ -64,34 +64,17 @@ public class ColoredHierarchy : EditorWindow
 			CustomHierarchy._ItemChanges.Clear();
 			/// TODO 
 			/// Add a function to put in all deafult preset
-			CustomHierarchy._ItemChanges.AddPreset("Preset_1", CustomHierarchyUtils.GetPresetOne());
-			CustomHierarchy._ItemChanges.AddPreset("Preset_2", CustomHierarchyUtils.GetPresetTwo());
-			CustomHierarchy._ItemChanges.AddPreset("Preset_3", CustomHierarchyUtils.GetPresetThree());
 		}
-		//if (GUILayout.Button("Debug"))
-		//{
-		//	CustomHierarchy._ItemChanges.PrintPresetCount();
-		//}
+		if (GUILayout.Button("Debug"))
+		{
+			CustomHierarchy._ItemChanges.PrintPresetCount();
+		}
 
 		GUILayout.EndHorizontal();
 
 		
 		//GUILayout.Label("inset an area/list that will have presets ");
-		if (CustomHierarchy._ItemChanges.Preset.Count != 0)
-		{
-			string[] presetList = CustomHierarchy._ItemChanges.GetPresetArray();
 
-
-			hi._presetSelection = EditorGUILayout.Popup(hi._presetSelection, presetList);
-
-			if (hi._presetSelection != hi._prevPresetSelection && hi._presetSelection != 0) 
-			{
-				hi._prevPresetSelection = hi._presetSelection;
-
-				// do something to set the preset
-				CustomHierarchy._ItemChanges.OneOfUs(presetList[hi._presetSelection], hi);
-			}
-		}
 		
 		
 		GUILayout.Space(spacer);
@@ -118,16 +101,18 @@ public class ColoredHierarchy : EditorWindow
 			CustomHierarchyUtils.RemoveHierarchyItemsFromObject(ref selected);
 		}
 
-		//if (GUILayout.Button("Debug"))
-		//{
-		//	CustomHierarchy.PrintCIKV();
-		//}
+		if (GUILayout.Button("Debug"))
+		{
+			CustomHierarchy.PrintCIKV();
+		}
 
 		GUILayout.EndHorizontal();
 	}
 
 	private void LoadItemSelected(HierarchyItems hi)
 	{
+
+
 
 		ColorSelection(hi);
 		if (hi._useDefaultBG || hi._useGradient || hi._useDefaultInactiveColor || hi._useDefaultSelectedColor)
@@ -253,6 +238,7 @@ public class ColoredHierarchy : EditorWindow
 		{
 			default:
 			case HierarchyItems.IconType.NONE: break;
+			case HierarchyItems.IconType.TREE: break;
 			case HierarchyItems.IconType.DEFAULT: break;
 			case HierarchyItems.IconType.COMPONENT:
 				// gets the first non-transform or prettyobject icon

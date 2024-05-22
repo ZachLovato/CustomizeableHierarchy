@@ -95,8 +95,8 @@ public class CustomHierarchy
 			if (backgroundRect != selectionRect)
 			{
 				//EditorGUIUtility.IconContent(_IconDefaultNames[i]).image as Texture2D
-				//GUI.DrawTexture(backgroundRect, EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
-				//EditorGUI.DrawPreviewTexture(new Rect(selectionRect.x -15, selectionRect.y + 1.5f, 15, 15), EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+				GUI.DrawTexture(backgroundRect, EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
+				EditorGUI.DrawPreviewTexture(new Rect(selectionRect.x -15, selectionRect.y + 1.5f, 15, 15), EditorGUIUtility.IconContent("Animation.Play").image as Texture2D);
 			}
 		}
 		else if (hi._useGradient)
@@ -189,6 +189,7 @@ public class CustomHierarchy
 				if (cont.image != null) content.image = cont.image;
 				else content.image = hi._Icon;
 				break;
+			case HierarchyItems.IconType.TREE: break;
 			case HierarchyItems.IconType.CUSTOM:
 				if (hi._Icon == null) return;
 				content.image = (Texture)hi._Icon;
