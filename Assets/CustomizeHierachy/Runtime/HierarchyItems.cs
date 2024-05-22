@@ -4,15 +4,14 @@ using UnityEngine;
 public class HierarchyItems : MonoBehaviour
 {
 	//TODO Hide all items in inspector
-	public enum IconType { DEFAULT, NONE, COMPONENT, TREE, CUSTOM }
+	public enum IconType { DEFAULT, NONE, COMPONENT, CUSTOM }
 
-	//[HideInInspector] public string _Name;
-	public string _Name;
+	[HideInInspector] public string _Name;
 	[HideInInspector] public Color _BGColor;
 	[HideInInspector] public Color _InactiveColor;
 	[HideInInspector] public Color _SelectedColor;
 	[HideInInspector] public bool _useFullWidth = false;
-	public Texture2D _Gradient = null;
+	[HideInInspector] public Texture2D _Gradient = null;
 	[HideInInspector] public Gradient _ColorGradient = new();
 	[HideInInspector] public Gradient _PrevGradient = new();
 
@@ -32,6 +31,10 @@ public class HierarchyItems : MonoBehaviour
 	[HideInInspector] public bool _useGradient;
 	[HideInInspector] public bool _useDefaultText;
 	[HideInInspector] public bool _useDefaultIcon;
+
+
+	[HideInInspector] public int _presetSelection = 0;
+	[HideInInspector] public int _prevPresetSelection = 0;
 
 	public HierarchyItems()
     {

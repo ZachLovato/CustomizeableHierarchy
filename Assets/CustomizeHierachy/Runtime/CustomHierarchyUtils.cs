@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable
+
 public static class CustomHierarchyUtils
 {
 	public static HierarchyItems GetHierarchyFromObject(ref GameObject go)
@@ -61,19 +63,50 @@ public static class CustomHierarchyUtils
 		return gradTex;
 	}
 
-	public static List<HierarchyItems> GetDefaultPresets()
+	public static HierarchyItems GetPresetOne()
 	{
-		List<HierarchyItems> hierarchyItems = new List<HierarchyItems>();
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
 
-		HierarchyItems tempHI = new HierarchyItems();
+		hi._useDefaultBG = true;
+		hi._BGColor = Color.HSVToRGB(359, 67, 87);
+		hi._useDefaultText = true;
+		hi._TextColor = Color.HSVToRGB(0, 0, 100);
 
+		Object.DestroyImmediate(temp);
 
-
-
-		return hierarchyItems;
+		return hi;
 	}
 
+	public static HierarchyItems GetPresetTwo()
+	{
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
 
+		hi._useDefaultBG = true;
+		hi._useFullWidth = true;
+		hi._BGColor = new Color(0.108f, 0.278f, 0.534f);
+		hi._useDefaultText = true;
+		hi._TextColor = new Color(0,0,0);
+		hi._textAnchor = TextAnchor.MiddleCenter;
 
+		Object.DestroyImmediate(temp);
+
+		return hi;
+	}
+
+	public static HierarchyItems GetPresetThree()
+	{
+		GameObject temp = new GameObject();
+		HierarchyItems hi = temp.AddComponent<HierarchyItems>();
+
+		hi._useDefaultText = true;
+		hi._TextColor = new Color(0,0,0);
+		hi._IconType = HierarchyItems.IconType.COMPONENT;
+
+		Object.DestroyImmediate(temp);
+
+		return hi;
+	}
 
 }
