@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 [InitializeOnLoad]
 public class CustomHierarchy
@@ -10,7 +9,6 @@ public class CustomHierarchy
 	private static string _ItemsChangeSOName = "Changeditems";
 	private static string[] _IconDefaultNames = {"GameObject Icon","Prefab Icon", "sv_label_1", "sv_label_2", "sv_label_3", "Animation.Play" };
 
-    private static Vector2 offset = new Vector2(0, 0);
     #region Color Variables
     public static bool useDefaultColors = true;
 
@@ -183,7 +181,8 @@ public class CustomHierarchy
 			case HierarchyItems.IconType.NONE: content.image = null; break;
 			default: case HierarchyItems.IconType.DEFAULT: break;
 			case HierarchyItems.IconType.COMPONENT:
-				Component component = go.GetComponentCount() > 1 ? go.GetComponentAtIndex(1) : go.GetComponentAtIndex(0);
+				Component[] components = go.GetComponents<Component>();
+				Component component = components.Length > 1 ? components[1] : components[0];
 				System.Type type = component.GetType();
 				GUIContent cont = EditorGUIUtility.ObjectContent(null, type);
 				if (cont.image != null) content.image = cont.image;
@@ -200,6 +199,7 @@ public class CustomHierarchy
 	public static void SetChangedItems()
 	{
 		if (_ItemChanges != null) return;
+		//Debug.Log(_ItemsChangeSOName); // uncommiting this fixes it some how
 		string[] temp = AssetDatabase.FindAssets(_ItemsChangeSOName);
 		string path = AssetDatabase.GUIDToAssetPath(temp[0]);
 		_ItemChanges = (HierarchyChanged)AssetDatabase.LoadAssetAtPath(path, typeof(HierarchyChanged));

@@ -1,16 +1,6 @@
-using Codice.CM.WorkspaceServer.DataStore.Configuration;
-using PrettyHierarchy;
-using System;
-using System.Drawing;
 using UnityEditor;
 using UnityEngine;
-using static Codice.CM.WorkspaceServer.WorkspaceTreeDataStore;
 
-//
-//
-//			UI Panel
-//
-//
 public class ColoredHierarchy : EditorWindow
 {
 	
@@ -25,7 +15,6 @@ public class ColoredHierarchy : EditorWindow
 
 	private void OnGUI()
 	{
-
 		if (CustomHierarchy._ItemChanges == null) return;
 
 		GameObject go = Selection.activeGameObject;
@@ -71,16 +60,10 @@ public class ColoredHierarchy : EditorWindow
 		}
 
 		GUILayout.EndHorizontal();
-
-		
-		//GUILayout.Label("inset an area/list that will have presets ");
-
-		
 		
 		GUILayout.Space(spacer);
-		
+
 		LoadItemSelected(hi);
-	
 	}
 
 
@@ -244,11 +227,12 @@ public class ColoredHierarchy : EditorWindow
 				// gets the first non-transform or prettyobject icon
 				GameObject go = hi.gameObject;
 
-				Component component = go.GetComponentAtIndex(0);
+				//Component component = go.GetComponentAtIndex(0); // why is this an error
+				Component component = go.GetComponents<Component>()[0];
 
-				if (go.GetComponentCount() != 2)
+				if (go.GetComponents<Component>().Length != 2)
 				{
-					component = go.GetComponentAtIndex(2);
+					component = go.GetComponents<Component>()[2];
 				}
 
 				System.Type type = component.GetType();
@@ -272,36 +256,4 @@ public class ColoredHierarchy : EditorWindow
 				break;
 		}
 	}
-
-	private void GradientCreation(HierarchyItems hi)
-	{
-		if (!hi._useGradient)
-		{
-			hi._useGradient = EditorGUILayout.Toggle("Use Gradient overlay", hi._useGradient);
-			if (hi._Gradient != null) hi._Gradient = null;
-		}
-        else
-        {
-			// toggle off gradient
-			hi._useGradient = EditorGUILayout.Toggle("Remove Gradient overlay", hi._useGradient);
-
-			// real gradient is being changed
-			hi._PrevGradient = (EditorGUILayout.GradientField("Gradient", hi._ColorGradient));
-
-			if (hi._PrevGradient != hi._ColorGradient)
-			{
-				hi._Gradient = null;
-
-				Debug.Log("Gradients are Different");
-			}
-
-			if (hi._Gradient == null)
-			{
-				hi._Gradient = CustomHierarchyUtils.Create(hi._ColorGradient);
-				Debug.Log("New Gradient Created");
-			}
-			hi._ColorGradient = hi._PrevGradient;
-		}
-    }
-
 }

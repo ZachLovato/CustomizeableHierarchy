@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public static class CustomHierarchyUtils
@@ -60,20 +58,4 @@ public static class CustomHierarchyUtils
 		gradTex.Apply();
 		return gradTex;
 	}
-
-	public static List<HierarchyItems> GetDefaultPresets()
-	{
-		List<HierarchyItems> hierarchyItems = new List<HierarchyItems>();
-
-		HierarchyItems tempHI = new HierarchyItems();
-
-
-
-
-		return hierarchyItems;
-	}
-
-
-
-
 }

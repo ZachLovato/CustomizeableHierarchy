@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HierarchyItems : MonoBehaviour
@@ -7,12 +6,12 @@ public class HierarchyItems : MonoBehaviour
 	public enum IconType { DEFAULT, NONE, COMPONENT, TREE, CUSTOM }
 
 	//[HideInInspector] public string _Name;
-	public string _Name;
+	[HideInInspector] public string _Name;
 	[HideInInspector] public Color _BGColor;
 	[HideInInspector] public Color _InactiveColor;
 	[HideInInspector] public Color _SelectedColor;
 	[HideInInspector] public bool _useFullWidth = false;
-	public Texture2D _Gradient = null;
+	[HideInInspector] public Texture2D _Gradient = null;
 	[HideInInspector] public Gradient _ColorGradient = new();
 	[HideInInspector] public Gradient _PrevGradient = new();
 
