@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [InitializeOnLoad]
-public class CustomHierarchy : MonoBehaviour
+public class CustomHierarchy
 {
 	public static HierarchyChanged _ItemChanges;
 	private static string _ItemsChangeSOName = "Changeditems";

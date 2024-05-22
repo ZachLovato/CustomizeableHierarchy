@@ -45,24 +45,35 @@ public class ColoredHierarchy : EditorWindow
 		// Presets
 		GUILayout.Label("Presets");
 
+		hi._Name = GUILayout.TextField(hi._Name);
+
 		GUILayout.BeginHorizontal();
 		if (GUILayout.Button("Add Preset"))
 		{
 			// add this it a list of presets
-			
+			CustomHierarchy._ItemChanges.AddPreset(hi._Name, hi);
 		}
 		if (GUILayout.Button("Remove Preset"))
 		{
 			// remove this from a set of presets
+			CustomHierarchy._ItemChanges.RemovePreset(hi._Name);
 		}
 		if (GUILayout.Button("Clear Presets"))
 		{
 			// clear all user made presets
+			CustomHierarchy._ItemChanges.Clear();
+			/// TODO 
+			/// Add a function to put in all deafult preset
+		}
+		if (GUILayout.Button("Debug"))
+		{
+			CustomHierarchy._ItemChanges.PrintPresetCount();
 		}
 
 		GUILayout.EndHorizontal();
 
-		GUILayout.Label("inset an area/list that will have presets ");
+		
+		//GUILayout.Label("inset an area/list that will have presets ");
 
 		
 		

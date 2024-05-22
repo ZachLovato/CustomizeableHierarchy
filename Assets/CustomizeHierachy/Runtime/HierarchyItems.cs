@@ -6,6 +6,8 @@ public class HierarchyItems : MonoBehaviour
 	//TODO Hide all items in inspector
 	public enum IconType { DEFAULT, NONE, COMPONENT, TREE, CUSTOM }
 
+	//[HideInInspector] public string _Name;
+	public string _Name;
 	[HideInInspector] public Color _BGColor;
 	[HideInInspector] public Color _InactiveColor;
 	[HideInInspector] public Color _SelectedColor;
@@ -54,11 +56,6 @@ public class HierarchyItems : MonoBehaviour
 	{
 		_IconType = type;
 		_Icon = icon;
-	}
-
-	public void SetTextStyle()
-	{
-
 	}
 
 	public bool isAnyBGUsed()
